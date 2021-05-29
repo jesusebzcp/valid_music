@@ -9,7 +9,6 @@ const Layout = ({children}) => {
 
   const onAuthStateChanged = useCallback(
     (user = null) => {
-      console.log('pendiente =>', user.uid);
       setUser(user?.uid, authDispatch);
     },
     [authDispatch],
