@@ -1,11 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, View, Text, StatusBar} from 'react-native';
 import {Colors, Fonts, Metrics} from '../../theme';
+import Register from './Register';
 import {Logo} from '../../assets/svg';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import Modal from '../../components/Modal';
 
 const Login = () => {
+  const [registerModal, setRegisterModal] = useState(false);
   const BORDER_RADIUS = 20;
 
   const styles = StyleSheet.create({
@@ -80,10 +83,14 @@ const Login = () => {
               color={'transparent'}
               textCustomStyles={styles.underline}
               customStyles={styles.footerBottom}
+              action={() => setRegisterModal(true)}
             />
           </View>
         </View>
       </View>
+      <Modal open={registerModal} setOpen={setRegisterModal}>
+        <Register />
+      </Modal>
     </View>
   );
 };

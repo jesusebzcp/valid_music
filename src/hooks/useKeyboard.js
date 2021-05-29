@@ -19,8 +19,8 @@ export const useKeyboard = () => {
     Keyboard.addListener('keyboardWillShow', onKeyboardDidShow);
     Keyboard.addListener('keyboardWillHide', onKeyboardDidHide);
     return () => {
-      Keyboard.removeSubscription('keyboardWillShow', onKeyboardDidShow);
-      Keyboard.removeSubscription('keyboardWillHide', onKeyboardDidHide);
+      Keyboard.removeListener('keyboardWillShow', onKeyboardDidShow);
+      Keyboard.removeListener('keyboardWillHide', onKeyboardDidHide);
     };
   }, []);
 

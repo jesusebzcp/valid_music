@@ -13,6 +13,7 @@ const colors = {
   light: '#fff',
   textInputBg: '#f7f7f8',
   background: '#ffff',
+  pinkMask: opacity => `rgba(0,0,0,${opacity})`,
 };
 
 export default colors;
