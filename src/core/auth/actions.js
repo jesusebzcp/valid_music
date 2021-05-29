@@ -67,3 +67,14 @@ export const singOffDispatch = async dispatch => {
     setError(true, dispatch);
   }
 };
+export const singInDispatch = async (user, dispatch) => {
+  const {email, password} = user;
+  try {
+    setLoading(true, dispatch);
+    await auth().signInWithEmailAndPassword(email, password);
+    setLoading(false, dispatch);
+  } catch (error) {
+    console.log('error:singInDispatch =>', error);
+    setError(true, dispatch);
+  }
+};

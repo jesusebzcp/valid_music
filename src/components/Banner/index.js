@@ -1,10 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
+import WebView from 'react-native-webview';
 import {Illustration} from '../../assets/svg';
-import {Colors, Fonts} from '../../theme';
+import {Colors, Fonts, Metrics} from '../../theme';
 import Button from '../Button';
+import Modal from '../Modal';
 
-const Banner = ({customStyles = {}}) => {
+const Banner = ({
+  customStyles = {},
+  title = 'Valid music',
+  subTile = 'Música al mejor precio',
+  textAction = 'Saber más',
+  url = 'https://www.last.fm/',
+}) => {
+  const [webModal, setWebModal] = useState(false);
   const styles = StyleSheet.create({
     container: {
       ...customStyles,
@@ -29,29 +38,36 @@ const Banner = ({customStyles = {}}) => {
       width: 120,
       marginTop: 10,
     },
+    webview: {height: Metrics.screenHeight - 80},
   });
   return (
     <View style={styles.container}>
       <View style={styles.col1}>
-        <Text style={[Fonts.style.bold(Colors.light, Fonts.size.h6, 'left')]}>
-          Valid music
+        <Text style={[Fonts.style.bold(Colors.light, Fonts.size.h6, 'center')]}>
+          {title}
         </Text>
         <Text
           style={[
-            Fonts.style.regular(Colors.light, Fonts.size.medium, 'left'),
+            Fonts.style.regular(Colors.light, Fonts.size.medium, 'center'),
           ]}>
-          Música al mejor precio
+          {subTile}
         </Text>
         <Button
           color={Colors.light}
           colorText={Colors.primary}
-          text={'Saber mas'}
+          text={textAction}
           customStyles={styles.button}
+          action={() => setWebModal(true)}
         />
       </View>
       <View style={styles.col2}>
         <Illustration />
       </View>
+      <Modal open={webModal} setOpen={setWebModal}>
+        <View style={styles.webview}>
+          <WebView source={{uri: url}} />
+        </View>
+      </Modal>
     </View>
   );
 };

@@ -4,3 +4,7 @@ export const INITIAL_VALUES_REGISTER = {
   email: '',
   password: '',
 };
+export const INITIAL_VALUES_LOGIN = {
+  email: '',
+  password: '',
+};

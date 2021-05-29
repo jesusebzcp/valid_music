@@ -98,8 +98,11 @@ const Register = ({close = () => {}}) => {
         <Input
           pHolder={'Email'}
           customStyles={styles.input4}
-          onChange={value => onChangeText('email', value)}
+          onChange={value => onChangeText('email', value.trim().toLowerCase())}
           value={values.email}
+          textContentType={'emailAddress'}
+          keyboardType={'email-address'}
+          autoCompleteType={'email'}
         />
         <Input
           pHolder={'Contraseña'}
