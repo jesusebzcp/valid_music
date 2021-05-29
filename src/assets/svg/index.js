@@ -1,2 +1,3 @@
 import Logo from './Logo';
-export {Logo};
+import IconNotification from './IconNotification';
+export {Logo, IconNotification};

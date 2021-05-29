@@ -1,15 +1,17 @@
 import React from 'react';
-import {Text} from 'react-native';
-import Content from '../../components/Content';
-import {Colors, Fonts} from '../../theme';
+import {StyleSheet, Text, View} from 'react-native';
+import Header from '../../components/Header';
 
 const Home = () => {
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+    },
+  });
   return (
-    <Content>
-      <Text style={Fonts.style.bold(Colors.dark, Fonts.size.bigTitle, 'left')}>
-        Hello world
-      </Text>
-    </Content>
+    <View style={styles.container}>
+      <Header />
+    </View>
   );
 };
 
