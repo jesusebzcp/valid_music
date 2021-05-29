@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "794569011690",
+    "firebase_url": "https://tiendart-a6a7c.firebaseio.com",
+    "project_id": "tiendart-a6a7c",
+    "storage_bucket": "tiendart-a6a7c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:794569011690:android:4b021453f2066b73a48293",
+        "android_client_info": {
+          "package_name": "com.template_react_native"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "794569011690-0gmp91pceutsbhrsjhl5dhbkd8q5rk72.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.template_react_native",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "794569011690-7ur641b6hmd34uhk0r3tkhos9s1659be.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqsJ4S8Pw6cu4hvJMN2pYvCNvrNFmZ5mE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "794569011690-7ur641b6hmd34uhk0r3tkhos9s1659be.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

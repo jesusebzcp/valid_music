@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>794569011690-lqldbube2vrm07qjqr7631e1danlkl39.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.794569011690-lqldbube2vrm07qjqr7631e1danlkl39</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>794569011690-0gmp91pceutsbhrsjhl5dhbkd8q5rk72.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCTpRmOQp0oPih0MsZQcV51eMhwosVZepc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>794569011690</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.template</string>
+	<key>PROJECT_ID</key>
+	<string>tiendart-a6a7c</string>
+	<key>STORAGE_BUCKET</key>
+	<string>tiendart-a6a7c.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:794569011690:ios:528c8bfd1d9ac3eaa48293</string>
+	<key>DATABASE_URL</key>
+	<string>https://tiendart-a6a7c.firebaseio.com</string>
+</dict>
+</plist>
