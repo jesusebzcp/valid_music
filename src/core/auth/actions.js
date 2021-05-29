@@ -58,3 +58,12 @@ export const setUser = async (uid, dispatch) => {
     setError(true, dispatch);
   }
 };
+export const singOffDispatch = async dispatch => {
+  try {
+    await auth().signOut();
+    dispatch({type: SET_USER, payload: null});
+  } catch (error) {
+    console.log('error:singOffDispatch =>', error);
+    setError(true, dispatch);
+  }
+};

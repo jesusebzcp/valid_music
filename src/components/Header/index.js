@@ -74,7 +74,7 @@ const Header = ({back = false}) => {
         </TouchableOpacity>
         <View style={styles.col2}>
           <Text style={[Fonts.style.bold(Colors.dark, Fonts.size.h6, 'left')]}>
-            {`${user.firstName} ${user.lastName}`}
+            {`${user?.firstName} ${user?.lastName}`}
           </Text>
           <Text
             style={[

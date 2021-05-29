@@ -10,8 +10,9 @@ const Stack = createStackNavigator();
 const MyStack = () => {
   const {state} = useContext(StoreContext);
   const {authState} = state;
+  const {user} = authState;
 
-  const stackNavigation = authState?.user ? SCREENS_STACK_USER : SCREENS_STACK;
+  const stackNavigation = user ? SCREENS_STACK_USER : SCREENS_STACK;
 
   return (
     <NavigationContainer>

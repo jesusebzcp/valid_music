@@ -1,20 +1,20 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {Text, FlatList, View, StyleSheet} from 'react-native';
-import RenderArtists from './RenderArtists';
+import RenderTracks from './RenderTracks';
 import {Colors, Fonts} from '../../theme';
 import {StoreContext} from '../../core';
-import {getArtistsDispatch} from '../../core/music/actions';
+import {getTracksDispatch} from '../../core/music/actions';
 
-const Artists = ({title}) => {
+const Tracks = () => {
   const {state, musicDispatch} = useContext(StoreContext);
   const {musicState} = state;
-  const {artists = []} = musicState;
+  const {tracks = []} = musicState;
 
   const [page, setPage] = useState(1);
 
   const styles = StyleSheet.create({
     container: {
-      marginLeft: 20,
+      marginHorizontal: 20,
       marginTop: 20,
     },
     title: {
@@ -27,7 +27,7 @@ const Artists = ({title}) => {
   };
 
   useEffect(() => {
-    getArtistsDispatch(page, musicDispatch);
+    getTracksDispatch(page, musicDispatch);
   }, [musicDispatch, page]);
 
   return (
@@ -37,23 +37,22 @@ const Artists = ({title}) => {
           Fonts.style.bold(Colors.dark, Fonts.size.medium, 'left'),
           styles.title,
         ]}>
-        {title}
+        {'En tendencia'}
       </Text>
 
       <FlatList
-        showsHorizontalScrollIndicator={false}
-        horizontal
+        showsVerticalScrollIndicator={false}
         scrollEnabled
-        data={artists}
+        data={tracks}
         onEndReached={() => handlePagination()}
         onEndReachedThreshold={1}
         keyExtractor={(item, index) => String(index)}
         renderItem={({item}) => {
-          return <RenderArtists item={item} />;
+          return <RenderTracks item={item} />;
         }}
       />
     </View>
   );
 };
 
-export default Artists;
+export default Tracks;
