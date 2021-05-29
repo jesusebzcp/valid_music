@@ -1,12 +1,44 @@
-import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import React, {useState, useContext} from 'react';
+import {View, Text, StyleSheet, Alert, Keyboard} from 'react-native';
+import {StoreContext} from '../../core';
 import {useKeyboard} from '../../hooks/useKeyboard';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import {Colors, Fonts, Metrics} from '../../theme';
+import {INITIAL_VALUES_REGISTER} from '../../constants/values';
+import {registerUserAction} from '../../core/auth/actions';
+import util from '../../util';
 
-const Register = () => {
+const Register = ({close = () => {}}) => {
+  const {state, authDispatch} = useContext(StoreContext);
+  const {authState} = state;
+  const {loading} = authState;
+
+  const [values, setValues] = useState(INITIAL_VALUES_REGISTER);
   const [keyboardHeight] = useKeyboard();
+
+  const onChangeText = (name, value) => {
+    setValues({...values, [name]: value});
+  };
+
+  const handleRegister = async () => {
+    Keyboard.dismiss();
+    for (const property in values) {
+      if (values[property] === '') {
+        Alert.alert('Ocurrió un error', 'Todos los campos son obligatorios');
+        return;
+      }
+    }
+
+    const user = Object.assign(values, {
+      id: util.create_UUID(),
+      create: Date.now(),
+    });
+    await registerUserAction(user, authDispatch);
+    setValues(INITIAL_VALUES_REGISTER);
+    close();
+  };
+
   const styles = StyleSheet.create({
     container: {
       paddingTop: 20,
@@ -49,15 +81,42 @@ const Register = () => {
         Completa tus datos para tu registro
       </Text>
       <View style={styles.firstInputs}>
-        <Input pHolder={'Nombre'} customStyles={styles.input1} />
-        <Input pHolder={'Apellido'} customStyles={styles.input2} />
+        <Input
+          pHolder={'Nombre'}
+          customStyles={styles.input1}
+          onChange={value => onChangeText('firstName', value)}
+          value={values.firstName}
+        />
+        <Input
+          pHolder={'Apellido'}
+          customStyles={styles.input2}
+          onChange={value => onChangeText('lastName', value)}
+          value={values.lastName}
+        />
       </View>
       <View>
-        <Input pHolder={'Email'} customStyles={styles.input4} />
-        <Input pHolder={'Contraseña'} customStyles={styles.input3} />
+        <Input
+          pHolder={'Email'}
+          customStyles={styles.input4}
+          onChange={value => onChangeText('email', value)}
+          value={values.email}
+        />
+        <Input
+          pHolder={'Contraseña'}
+          customStyles={styles.input3}
+          onChange={value =>
+            onChangeText('password', value.trim().toLowerCase())
+          }
+          value={values.password}
+          secureTextEntry={true}
+        />
       </View>
       <View style={styles.button}>
-        <Button text={'Registrarme'} />
+        <Button
+          text={'Registrarme'}
+          action={() => handleRegister()}
+          loading={loading}
+        />
       </View>
       <View style={{height: keyboardHeight}} />
     </View>

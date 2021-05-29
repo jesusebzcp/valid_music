@@ -9,6 +9,8 @@ const Input = ({
   autoCompleteType = 'off',
   secureTextEntry = false,
   customStyles = {},
+  onChange = () => {},
+  value = '',
 }) => {
   const styles = StyleSheet.create({
     input: {
@@ -31,6 +33,7 @@ const Input = ({
   });
   return (
     <TextInput
+      value={value}
       style={styles.input}
       placeholder={pHolder}
       placeholderTextColor={Colors.gray}
@@ -38,6 +41,7 @@ const Input = ({
       keyboardType={keyboardType}
       autoCompleteType={autoCompleteType}
       secureTextEntry={secureTextEntry}
+      onChangeText={t => onChange(t)}
     />
   );
 };

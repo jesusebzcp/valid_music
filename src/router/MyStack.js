@@ -1,14 +1,18 @@
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, {useContext} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {SCREENS_STACK, SCREENS_STACK_USER} from '../config/screens';
+import {StoreContext} from '../core';
 
 const Stack = createStackNavigator();
 
 const MyStack = () => {
-  const user = false;
-  const stackNavigation = user ? SCREENS_STACK_USER : SCREENS_STACK;
+  const {state} = useContext(StoreContext);
+  const {authState} = state;
+
+  const stackNavigation = authState?.user ? SCREENS_STACK_USER : SCREENS_STACK;
+
   return (
     <NavigationContainer>
       <Stack.Navigator>

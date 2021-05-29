@@ -89,7 +89,7 @@ const Login = () => {
         </View>
       </View>
       <Modal open={registerModal} setOpen={setRegisterModal}>
-        <Register />
+        <Register close={() => setRegisterModal(false)} />
       </Modal>
     </View>
   );
