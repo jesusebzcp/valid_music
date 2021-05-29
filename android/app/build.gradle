@@ -193,6 +193,8 @@ dependencies {
 
     //Open Custom dependencies
     implementation project(':react-native-config')
+    implementation project(':react-native-svg')
+
     //Close Custom dependencies
 
     

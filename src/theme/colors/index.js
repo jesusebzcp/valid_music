@@ -12,7 +12,7 @@ const colors = {
   lightGray: '#D3D3D3',
   light: '#fff',
   textInputBg: '#f7f7f8',
-  background: '#e8e8e8',
+  background: '#ffff',
 };
 
 export default colors;
