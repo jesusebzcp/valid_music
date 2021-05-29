@@ -20,7 +20,7 @@ const Button = ({
     text: {...textCustomStyles},
     button: {
       ...customStyles,
-      height: 51,
+      height: 40,
       backgroundColor: loading ? Colors.lightGray : color,
       borderRadius: 10,
       justifyContent: 'center',

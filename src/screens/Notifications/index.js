@@ -2,7 +2,7 @@ import React from 'react';
 import {View} from 'react-native';
 import Header from '../../components/Header';
 
-const Profile = () => {
+const Notifications = () => {
   return (
     <View>
       <Header back={true} />
@@ -10,4 +10,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default Notifications;

@@ -7,17 +7,26 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {IconNotification} from '../../assets/svg';
+import {IconNotification, IconBack} from '../../assets/svg';
 import {StoreContext} from '../../core';
 import {Colors, Fonts, Metrics} from '../../theme';
 
-const Header = () => {
+const Header = ({back = false}) => {
   const navigation = useNavigation();
   const {state} = useContext(StoreContext);
   const {authState} = state;
   const {user} = authState;
+
   const handleNavigation = screen => {
     navigation.navigate(screen);
+  };
+
+  const handleLeftButton = () => {
+    if (back) {
+      navigation.goBack();
+      return;
+    }
+    handleNavigation('Notifications');
   };
   const styles = StyleSheet.create({
     container: {
@@ -58,9 +67,11 @@ const Header = () => {
         barStyle={'dark-content'}
       />
       <View style={styles.container}>
-        <View style={styles.col1}>
-          <IconNotification />
-        </View>
+        <TouchableOpacity
+          style={styles.col1}
+          onPress={() => handleLeftButton()}>
+          {back ? <IconBack /> : <IconNotification />}
+        </TouchableOpacity>
         <View style={styles.col2}>
           <Text style={[Fonts.style.bold(Colors.dark, Fonts.size.h6, 'left')]}>
             {`${user.firstName} ${user.lastName}`}
