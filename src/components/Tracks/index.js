@@ -1,5 +1,11 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {Text, FlatList, View, StyleSheet} from 'react-native';
+import React, {useContext, memo, useMemo, useState} from 'react';
+import {
+  Text,
+  FlatList,
+  View,
+  StyleSheet,
+  ActivityIndicator,
+} from 'react-native';
 import RenderTracks from './RenderTracks';
 import {Colors, Fonts} from '../../theme';
 import {StoreContext} from '../../core';
@@ -11,6 +17,7 @@ const Tracks = () => {
   const {tracks = []} = musicState;
 
   const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
 
   const styles = StyleSheet.create({
     container: {
@@ -20,14 +27,30 @@ const Tracks = () => {
     title: {
       marginVertical: 10,
     },
+    footer: {
+      height: 200,
+    },
   });
 
   const handlePagination = () => {
     setPage(page + 1);
   };
+  const renderFooter = () => {
+    if (!loading) {
+      return null;
+    }
 
-  useEffect(() => {
-    getTracksDispatch(page, musicDispatch);
+    return (
+      <View style={styles.footer}>
+        <ActivityIndicator animating size="small" color={Colors.primary} />
+      </View>
+    );
+  };
+
+  useMemo(async () => {
+    setLoading(true);
+    await getTracksDispatch(page, musicDispatch);
+    setLoading(false);
   }, [musicDispatch, page]);
 
   return (
@@ -41,12 +64,15 @@ const Tracks = () => {
       </Text>
 
       <FlatList
+        initialNumToRender={10}
         showsVerticalScrollIndicator={false}
         scrollEnabled
         data={tracks}
         onEndReached={() => handlePagination()}
         onEndReachedThreshold={1}
+        ListFooterComponent={() => renderFooter()}
         keyExtractor={(item, index) => String(index)}
+        decelerationRate={'normal'}
         renderItem={({item}) => {
           return <RenderTracks item={item} />;
         }}
@@ -55,4 +81,4 @@ const Tracks = () => {
   );
 };
 
-export default Tracks;
+export default memo(Tracks);

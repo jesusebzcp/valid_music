@@ -37,15 +37,12 @@ export const getArtistsDispatch = async (page = 1, dispatch) => {
 
 export const getTracksDispatch = async (page = 1, dispatch) => {
   try {
-    setLoading(true, dispatch);
     const url = `2.0/?method=geo.gettoptracks&country=spain&api_key=${Config.TOKEN}&format=json&page=${page}&limit=${LIMIT}`;
     const {data} = await clientAxios.get(url);
     const tracks = data?.tracks?.track;
 
-    setLoading(false, dispatch);
     dispatch({type: GET_TRACKS, payload: tracks});
   } catch (error) {
-    setLoading(false, dispatch);
     console.log('error:getTracks', error);
   }
 };

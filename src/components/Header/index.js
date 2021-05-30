@@ -38,7 +38,7 @@ const Header = ({back = false}) => {
     col1: {
       flex: 1,
       justifyContent: 'center',
-      marginLeft: 5,
+      alignItems: 'center',
     },
     col2: {
       flex: 3,
