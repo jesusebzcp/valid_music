@@ -1,5 +1,5 @@
 {
-  "name": "template_react_native",
+  "name": "valid_music",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -8,6 +8,7 @@
     "pod": "cd ios && pod install",
     "dual": "yarn ios && yarn android",
     "reportAndroid": "cd android && ./gradlew signingReport",
+    "installAndroid": "npx react-native run-android --variant=release",
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint ."
