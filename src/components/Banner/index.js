@@ -19,7 +19,7 @@ const Banner = ({
       ...customStyles,
       height: 150,
       backgroundColor: Colors.secondary,
-      marginHorizontal: 10,
+      marginHorizontal: 20,
       borderRadius: 10,
       flexDirection: 'row',
     },

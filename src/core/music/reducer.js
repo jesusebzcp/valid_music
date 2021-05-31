@@ -1,11 +1,12 @@
 import createReducer from '../createReducer';
-import {LOADING, ERROR, GET_ARTISTS, GET_TRACKS} from './types';
+import {LOADING, ERROR, GET_ARTISTS, GET_TRACKS, GET_SEARCH} from './types';
 
 export const INITIAL_STATE_MUSIC = {
   loading: false,
   error: false,
   artists: [],
   tracks: [],
+  list_search: [],
 };
 
 const setLoading = (state, action) => {
@@ -36,10 +37,17 @@ const getTracks = (state, action) => {
     tracks: state.tracks.concat(tracks),
   };
 };
+const getListSearch = (state, action) => {
+  return {
+    ...state,
+    list_search: action.payload,
+  };
+};
 
 export default createReducer(INITIAL_STATE_MUSIC, {
   [LOADING]: setLoading,
   [ERROR]: setError,
   [GET_ARTISTS]: getArtists,
   [GET_TRACKS]: getTracks,
+  [GET_SEARCH]: getListSearch,
 });

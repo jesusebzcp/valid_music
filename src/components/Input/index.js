@@ -11,6 +11,7 @@ const Input = ({
   customStyles = {},
   onChange = () => {},
   value = '',
+  inputRef = null,
 }) => {
   const styles = StyleSheet.create({
     input: {
@@ -18,7 +19,7 @@ const Input = ({
       color: Colors.dark,
       backgroundColor: Colors.textInputBg,
       paddingHorizontal: 10,
-      borderRadius: 10,
+      borderRadius: 6,
       height: 51,
       shadowColor: '#000',
       shadowOffset: {
@@ -33,6 +34,7 @@ const Input = ({
   });
   return (
     <TextInput
+      ref={inputRef}
       value={value}
       style={styles.input}
       placeholder={pHolder}

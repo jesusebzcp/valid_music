@@ -1,6 +1,6 @@
 import Config from 'react-native-config';
 import clientAxios from '../../config/axiosClient';
-import {LOADING, ERROR, GET_ARTISTS, GET_TRACKS} from './types';
+import {LOADING, ERROR, GET_ARTISTS, GET_TRACKS, GET_SEARCH} from './types';
 
 const LIMIT = 10;
 
@@ -44,5 +44,22 @@ export const getTracksDispatch = async (page = 1, dispatch) => {
     dispatch({type: GET_TRACKS, payload: tracks});
   } catch (error) {
     console.log('error:getTracks', error);
+  }
+};
+export const searchArtistsAction = async (key, dispatch) => {
+  try {
+    setLoading(true, dispatch);
+
+    const url = `http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=${key}&api_key=${Config.TOKEN}&format=json&limit=${LIMIT}`;
+    const {data} = await clientAxios.get(url);
+
+    setLoading(false, dispatch);
+    dispatch({
+      type: GET_SEARCH,
+      payload: data?.results?.artistmatches?.artist,
+    });
+  } catch (error) {
+    setLoading(false, dispatch);
+    console.log('error =>', error);
   }
 };
