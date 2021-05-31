@@ -33,6 +33,7 @@ Sometimes you may need to reset or clear the React Native packager's cache. To d
 npm start -- --reset-cache
 # or
 yarn start -- --reset-cache
+
 ```
 
 #### `npm run ios`
