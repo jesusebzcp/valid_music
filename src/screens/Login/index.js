@@ -95,17 +95,13 @@ const Login = () => {
             autoCompleteType={'email'}
             customStyles={styles.spacing}
             value={values.email}
-            onChange={value =>
-              onChangeText('email', value.trim().toLowerCase())
-            }
+            onChange={value => onChangeText('email', value.trim())}
           />
           <Input
             pHolder={'Contraseña *'}
             secureTextEntry={true}
             customStyles={styles.spacing}
-            onChange={value =>
-              onChangeText('password', value.trim().toLowerCase())
-            }
+            onChange={value => onChangeText('password', value.trim())}
             value={values.password}
           />
 
