@@ -49,7 +49,11 @@ Like `npm start`, but also attempts to open your app on a connected Android devi
 1. Make sure that you can run adb from your terminal.
 2. Open Genymotion and navigate to `Settings -> ADB`. Select “Use custom Android SDK tools” and update with your [Android SDK directory](https://stackoverflow.com/questions/25176594/android-sdk-location).
 
-## Modules
+## DOWNLOAD APK
+
+https://cutt.ly/ZndIKbe
+
+## MODULES
 
 ## AUTH
 
